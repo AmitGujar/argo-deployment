@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-deployment-application
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/AmitGujar/argo-deployment.git
+    targetRevision: HEAD
+    path: base
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argo-deployment
+  syncPolicy:
+    automated: 
+      prune: true #it will delete the resources if they are deleted
+      selfHeal: true #it will sync with the git repo if something changes
+    syncOptions:
+    - CreateNamespace=true
