@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argo-deployment
+  namespace: argo-deployment
+spec:
+  selector:
+    matchLabels:
+      app: argo-deployment
+  template:
+    metadata:
+      labels:
+        app: argo-deployment
+    spec:
+      containers:
+      - name: argo-deployment
+        image: amitgujar/cloudmigration:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+
