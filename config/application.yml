@@ -11,9 +11,9 @@ spec:
     path: base
   destination:
     server: https://kubernetes.default.svc
-    namespace: argo-deployment
+    namespace: test-argo-deployment
   syncPolicy:
-    automated: 
+    automated:
       prune: true #it will delete the resources if they are deleted
       selfHeal: true #it will sync with the git repo if something changes
     syncOptions:
